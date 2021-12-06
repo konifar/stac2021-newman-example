@@ -1,0 +1,22 @@
+name: newman run
+
+on: pull_request
+
+jobs:
+  newman-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+
+      - name: Install newman
+        run: sudo npm install -g newman
+
+      - name: Run newman
+        run: newman run https://www.getpostman.com/collections/$POSTMAN_COLLECTION_ID?$POSTMAN_API_KEY
+        env:
+          POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
+          POSTMAN_COLLECTION_ID: ${{ secrets.POSTMAN_COLLECTION_ID }}
