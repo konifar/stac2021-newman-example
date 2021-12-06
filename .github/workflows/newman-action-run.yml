@@ -7,11 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v1
 
       - name: Run newman
         uses: matt-ball/newman-action@master
         with:
           apiKey: ${{ secrets.POSTMAN_API_KEY }}
-          collection: 18507875-41095035-c383-49ab-8553-a353132a1924
-          environment: none
+          collection: ${{ secrets.POSTMAN_COLLECTION_ID }}
+          environment: ${{ secrets.POSTMAN_ENVIRONMENT_ID }}
