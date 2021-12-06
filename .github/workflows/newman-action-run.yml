@@ -14,3 +14,4 @@ jobs:
         with:
           apiKey: ${{ secrets.POSTMAN_API_KEY }}
           collection: 18507875-41095035-c383-49ab-8553-a353132a1924
+          environment: none
