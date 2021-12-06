@@ -1,0 +1,16 @@
+name: newman action run
+
+on: pull_request
+
+jobs:
+  newman-action-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup node
+        uses: matt-ball/newman-action@master
+        with:
+          apiKey: ${{ secrets.POSTMAN_API_KEY }}
+          collection: ${{ secrets.POSTMAN_COLLECTION_ID }}
