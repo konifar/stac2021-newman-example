@@ -9,6 +9,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - uses: matt-ball/newman-action@master
+      - name: Run newman
+        uses: matt-ball/newman-action@master
         with:
+          apiKey: ${{ secrets.POSTMAN_API_KEY }}
           collection: 18507875-41095035-c383-49ab-8553-a353132a1924
