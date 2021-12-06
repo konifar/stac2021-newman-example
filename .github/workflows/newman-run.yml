@@ -3,7 +3,7 @@ name: newman run
 on: pull_request
 
 jobs:
-  un:
+  run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
