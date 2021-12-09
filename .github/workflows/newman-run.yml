@@ -16,7 +16,8 @@ jobs:
         run: sudo npm install -g newman
 
       - name: Run newman
-        run: newman run https://www.getpostman.com/collections/$POSTMAN_COLLECTION_ID?$POSTMAN_API_KEY
+        run: newman run https://www.getpostman.com/collections/$POSTMAN_COLLECTION_ID?$POSTMAN_API_KEY -e https://api.getpostman.com/environments/$POSTMAN_ENVIRONMENT_ID?apikey=$POSTMAN_API_KEY
         env:
           POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
           POSTMAN_COLLECTION_ID: ${{ secrets.POSTMAN_COLLECTION_ID }}
+          POSTMAN_ENVIRONMENT_ID: ${{ secrets.POSTMAN_ENVIRONMENT_ID }}
