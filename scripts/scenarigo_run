@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+envFile='prod'
+
+while getopts e: OPT
+do
+  case $OPT in
+     e) envFile=$OPTARG;;
+  esac
+done
+
+cd "$(dirname "$0")/../scenarigo"
+
+# Set environment variables
+set -a
+source environments/$envFile.env
+set +a
+
+scenarigo run
+
+# Delete environment variables
+unset ${!SCENARIGO_@}

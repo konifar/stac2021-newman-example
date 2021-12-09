@@ -1,0 +1,19 @@
+name: scenarigo run
+
+on: pull_request
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      TARGET_ENV: prod
+    steps:
+      - uses: actions/setup-go@v2
+
+      - uses: actions/checkout@v2
+
+      - name: Get dependencies
+        run: ./scripts/bootstrap
+
+      - name: Run scenarigo
+        run: ./scripts/scenarigo_run -e ${{ env.TARGET_ENV }}
