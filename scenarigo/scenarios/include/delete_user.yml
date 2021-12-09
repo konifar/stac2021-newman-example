@@ -1,0 +1,9 @@
+steps:
+- protocol: http
+  request:
+    method: DELETE
+    url: '{{env.SCENARIGO_BASE_URL}}/v1/users/{{env.SCENARIGO_TEST_USER_NAME}}'
+    header:
+      X-USER-TOKEN: '{{env.SCENARIGO_TEST_USER_TOKEN}}'
+  expect:
+    code: '{{assert.or("OK", "Bad Request")}}' # Ignore error

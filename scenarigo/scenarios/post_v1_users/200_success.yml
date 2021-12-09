@@ -1,0 +1,16 @@
+steps:
+- include: '../include/delete_user.yml'
+- protocol: http
+  request:
+    method: POST
+    url: '{{env.SCENARIGO_BASE_URL}}/v1/users'
+    body:
+      token: '{{env.SCENARIGO_TEST_USER_TOKEN}}'
+      username: '{{env.SCENARIGO_TEST_USER_NAME}}'
+      agreeTermsOfService: 'yes'
+      notMinor: 'yes'
+  expect:
+    code: 200
+    body:
+      message: "Success. Let's visit {{env.SCENARIGO_BASE_URL}}/@{{env.SCENARIGO_TEST_USER_NAME}} , it is your profile page!"
+      isSuccess: true
