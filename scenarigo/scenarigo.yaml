@@ -3,7 +3,6 @@ schemaVersion: config/v1
 scenarios:
 - scenarios
 
-
 pluginDirectory: ./plugins
 
 output:
